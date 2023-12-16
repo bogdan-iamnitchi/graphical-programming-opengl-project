@@ -52,14 +52,16 @@ float lastFrame = 0.0f;
 
 // MODELS-------------------------------------------------
 gps::Model3D castle;
-gps::Model3D mountain;
+gps::Model3D terrain;
+gps::Model3D house1;
+gps::Model3D house2;
 
 gps::Model3D nanosuit;
 gps::Model3D ground;
 gps::Model3D lightCube;
 gps::Model3D screenQuad;
 
-// MODELS-------------------------------------------------
+// SKY BOX-------------------------------------------------
 gps::SkyBox mySkyBox;
 gps::Shader skyboxShader;
 
@@ -179,7 +181,7 @@ void scrollCallback(GLFWwindow *window, double xpos, double ypos)
     // update projection matrix
     projection = glm::perspective(glm::radians(myCamera.getZoom()),
                                   (float)myWindow.getWindowDimensions().width / (float)myWindow.getWindowDimensions().height,
-                                  0.1f, 20.0f);
+                                  0.1f, 1000.0f);
 }
 
 void processMovement()
@@ -296,13 +298,15 @@ void initOpenGLState()
 
 void initModels()
 {
-    // castle.LoadModel("models/castle/castelo.obj");
-    // mountain.LoadModel("models/ground/mountain/mount.obj");
-
     nanosuit.LoadModel("models/objects/nanosuit/nanosuit.obj");
     ground.LoadModel("models/objects/ground/ground.obj");
     lightCube.LoadModel("models/objects/cube/cube.obj");
     screenQuad.LoadModel("models/objects/quad/quad.obj");
+
+    castle.LoadModel("models/castle/castle.obj");
+    terrain.LoadModel("models/ground/ground.obj");
+    house1.LoadModel("models/houses/house1/house.obj");
+    // house2.LoadModel("models/houses/house2/house.obj");
 }
 
 void initShaders()
@@ -343,7 +347,7 @@ void initUniforms()
     // create projection matrix
     projection = glm::perspective(glm::radians(45.0f),
                                   (float)myWindow.getWindowDimensions().width / (float)myWindow.getWindowDimensions().height,
-                                  0.1f, 20.0f);
+                                  0.1f, 1000.0f);
     projectionLoc = glGetUniformLocation(myBasicShader.shaderProgram, "projection");
     glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
@@ -452,6 +456,16 @@ void drawGround(gps::Shader shader, bool depthPass)
     ground.Draw(shader);
 }
 
+void drawCastle(gps::Shader shader, bool depthPass)
+{
+    shader.useShaderProgram();
+
+    castle.Draw(shader);
+    terrain.Draw(shader);
+    house1.Draw(shader);
+    // house2.Draw(shader);
+}
+
 void drawObjects(gps::Shader shader, bool depthPass)
 {
     // custom shader
@@ -548,7 +562,11 @@ void renderScene()
         // final scene rendering pass (with shadows)
         renderSceneShadowMap(myBasicShader);
         // draw a white cube around the light
+        
+        drawCastle(myBasicShader, false);
+        
         drawLightCube(lightShader);
+
         // skybox
         mySkyBox.Draw(skyboxShader, view, projection);
     }

@@ -108,8 +108,8 @@ float computeShadows()
 
 void main() 
 {
-	// computeLightComponents();
-	luminaPunctiforma();
+	computeLightComponents();
+	// luminaPunctiforma();
 		
 	ambient *= texture(diffuseTexture, fTexCoords).rgb;
 	diffuse *= texture(diffuseTexture, fTexCoords).rgb;
