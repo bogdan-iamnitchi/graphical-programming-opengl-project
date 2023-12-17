@@ -51,10 +51,11 @@ float deltaTime = 0.0f; // time between current frame and last frame
 float lastFrame = 0.0f;
 
 // MODELS-------------------------------------------------
-gps::Model3D castle;
-gps::Model3D terrain;
-gps::Model3D house1;
-gps::Model3D house2;
+gps::Model3D casteluri;
+gps::Model3D cladiri;
+gps::Model3D map;
+gps::Model3D others;
+gps::Model3D village;
 
 gps::Model3D nanosuit;
 gps::Model3D ground;
@@ -303,10 +304,11 @@ void initModels()
     lightCube.LoadModel("models/objects/cube/cube.obj");
     screenQuad.LoadModel("models/objects/quad/quad.obj");
 
-    castle.LoadModel("models/castle/castle.obj");
-    terrain.LoadModel("models/ground/ground.obj");
-    house1.LoadModel("models/houses/house1/house.obj");
-    // house2.LoadModel("models/houses/house2/house.obj");
+    casteluri.LoadModel("scena/casteluri/main.obj");
+    cladiri.LoadModel("scena/cladiri/main.obj");
+    map.LoadModel("scena/map/main.obj");
+    others.LoadModel("scena/others/main.obj");
+    village.LoadModel("scena/village/main.obj");
 }
 
 void initShaders()
@@ -456,21 +458,22 @@ void drawGround(gps::Shader shader, bool depthPass)
     ground.Draw(shader);
 }
 
-void drawCastle(gps::Shader shader, bool depthPass)
-{
-    shader.useShaderProgram();
-
-    castle.Draw(shader);
-    terrain.Draw(shader);
-    house1.Draw(shader);
-    // house2.Draw(shader);
-}
-
 void drawObjects(gps::Shader shader, bool depthPass)
 {
     // custom shader
     drawNanosuit(shader, depthPass);
     drawGround(shader, depthPass);
+}
+
+void drawScene(gps::Shader shader, bool depthPass)
+{
+    shader.useShaderProgram();
+
+    casteluri.Draw(shader);
+    cladiri.Draw(shader);
+    map.Draw(shader);
+    others.Draw(shader);
+    village.Draw(shader);
 }
 
 void drawLightCube(gps::Shader shader)
@@ -563,7 +566,7 @@ void renderScene()
         renderSceneShadowMap(myBasicShader);
         // draw a white cube around the light
         
-        drawCastle(myBasicShader, false);
+        drawScene(myBasicShader, false);
         
         drawLightCube(lightShader);
 
