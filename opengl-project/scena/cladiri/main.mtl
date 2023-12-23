@@ -1,7 +1,7 @@
 # Blender MTL File: 'main.blend'
-# Material Count: 16
+# Material Count: 10
 
-newmtl Material.007
+newmtl Default_OBJ
 Ns 225.000000
 Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000
@@ -10,73 +10,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd textures/building-old/wndw038M.jpg
-
-newmtl Material.008
-Ns 225.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Kd textures/building-old/ground009b.jpg
-
-newmtl Material.009
-Ns 225.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Kd textures/building-old/slat41XL.jpg
-
-newmtl Material.010
-Ns 225.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Kd textures/building-old/brck91L.jpg
-
-newmtl Material.011
-Ns 225.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Kd textures/building-old/wndw038M.jpg
-
-newmtl Material.012
-Ns 225.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Kd textures/building-old/wndw107M.jpg
-
-newmtl Material.013
-Ns 225.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Kd textures/building-old/germany010.jpg
+map_Kd textures/Church (1)_1001_BaseColor.png
 
 newmtl Material.025
 Ns 225.000000
@@ -87,7 +21,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd textures/minitower/flag.jpg
+map_Kd textures/flag.jpg
 
 newmtl Material.026
 Ns 225.000000
@@ -98,7 +32,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd textures/minitower/germany010.jpg
+map_Kd textures/germany010.jpg
 
 newmtl Material.027
 Ns 225.000000
@@ -109,7 +43,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd textures/minitower/sweden008.jpg
+map_Kd textures/sweden008.jpg
 
 newmtl Material.028
 Ns 225.000000
@@ -120,7 +54,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd textures/minitower/pared2.jpg
+map_Kd textures/pared2.jpg
 
 newmtl Material.029
 Ns 225.000000
@@ -131,7 +65,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd textures/minitower/wndw038M.jpg
+map_Kd textures/wndw038M.jpg
 
 newmtl Material.030
 Ns 225.000000
@@ -142,7 +76,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd textures/minitower/door51L.jpg
+map_Kd textures/door51L.jpg
 
 newmtl Material.031
 Ns 225.000000
@@ -153,7 +87,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd textures/minitower/wood05.jpg
+map_Kd textures/wood05.jpg
 
 newmtl Material.032
 Ns 225.000000
@@ -164,15 +98,15 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd textures/minitower/wood05.jpg
+map_Kd textures/wood05.jpg
 
-newmtl castleRender:castle:castle1:blinn2SG.001
-Ns 0.000000
+newmtl Material3
+Ns 225.000000
 Ka 1.000000 1.000000 1.000000
-Kd 0.000000 0.000000 0.000000
-Ks 0.140000 0.140000 0.140000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
-Ni 1.000000
+Ni 1.450000
 d 1.000000
 illum 2
-map_Kd textures/building-old/s333.jpg
+map_Kd textures/Texture_3.png

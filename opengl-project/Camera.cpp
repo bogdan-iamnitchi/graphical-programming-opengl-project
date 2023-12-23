@@ -6,12 +6,13 @@ namespace gps
 {
 
     // Camera constructor
-    Camera::Camera(glm::vec3 cameraPosition, glm::vec3 cameraTarget, glm::vec3 cameraUp)
+    Camera::Camera(glm::vec3 cameraPosition, glm::vec3 cameraTarget, glm::vec3 cameraUp, float speed, float yaw, float pitch, float zoom)
     {
          //init the yaw and pitch angles
-        this->yaw = YAW;
-        this->pitch = PITCH;
-        this->zoom = ZOOM;
+        this->yaw = yaw;
+        this->pitch = pitch;
+        this->zoom = zoom;
+        this->speed = speed;
 
         this->worldUpDirection = cameraUp;
 
@@ -23,6 +24,36 @@ namespace gps
         this->cameraFrontDirection = glm::normalize(cameraTarget - cameraPosition);
         this->cameraRightDirection = glm::normalize(glm::cross(cameraUpDirection, cameraFrontDirection));
 
+    }
+
+    glm::vec3 Camera::getPosition() {
+        return this->cameraPosition;
+    }
+
+    glm::vec3 Camera::getFront() {
+        return this->cameraFrontDirection;
+    }
+
+    void Camera::setPosition(glm::vec3 position) {
+        this->cameraPosition = position;
+    }
+
+    void Camera::setTarget(glm::vec3 target) {
+        this->cameraTarget = target;
+    }
+
+    void Camera::setSpeed(float speed) {
+        if(speed > 0.0f) {
+            this->speed = speed;
+        }
+    }
+
+    void Camera::setYaw(float yaw) {
+        this->yaw = yaw;
+    }
+
+    void Camera::setPitch(float pitch) {
+        this->pitch =  pitch;
     }
     
     float Camera::getZoom() {
@@ -38,21 +69,27 @@ namespace gps
     // Update the camera internal parameters following a camera move event
     void Camera::move(MOVE_DIRECTION direction, float deltaTime)
     {
-        float speed = deltaTime * SPEED;
+        float actualSpeed = deltaTime * speed;
 
         switch (direction)
         {
             case MOVE_FORWARD:
-                cameraPosition += cameraFrontDirection * speed;
+                cameraPosition += cameraFrontDirection * actualSpeed;
                 break;
             case MOVE_BACKWARD:
-                cameraPosition -= cameraFrontDirection * speed;
+                cameraPosition -= cameraFrontDirection * actualSpeed;
                 break;
             case MOVE_LEFT:
-                cameraPosition -= cameraRightDirection * speed;
+                cameraPosition -= cameraRightDirection * actualSpeed;
                 break;
             case MOVE_RIGHT:
-                cameraPosition += cameraRightDirection * speed;
+                cameraPosition += cameraRightDirection * actualSpeed;
+                break;
+            case MOVE_UP:
+                cameraPosition += cameraUpDirection * actualSpeed;
+                break;
+            case MOVE_DOWN:
+                cameraPosition -= cameraUpDirection * actualSpeed;
                 break;
         }
     }
@@ -100,4 +137,5 @@ namespace gps
         if (zoom > 45.0f)
             zoom = 45.0f; 
     }
+
 }
