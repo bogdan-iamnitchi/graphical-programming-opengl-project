@@ -171,6 +171,8 @@ bool firstMouse = true;
 float deltaTime = 0.0f; // time between current frame and last frame
 float lastFrame = 0.0f;
 
+bool showCursor = false;
+
 //-----------------------------------SOUNDS---------------------------------------------------------
 
 void initSoundEngine()
@@ -284,6 +286,16 @@ void keyboardCallback(GLFWwindow *window, int key, int scancode, int action, int
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
     {
         glfwSetWindowShouldClose(window, GL_TRUE);
+    }
+    //glfwSetInputMode(myWindow.getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    if (key == GLFW_KEY_LEFT_CONTROL && action == GLFW_PRESS)
+    {
+        showCursor = !showCursor;
+        if (showCursor) {
+            glfwSetInputMode(myWindow.getWindow(), GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        } else {
+            glfwSetInputMode(myWindow.getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        }
     }
 
     if (key == GLFW_KEY_TAB && action == GLFW_PRESS)
@@ -569,7 +581,7 @@ void setWindowCallbacks()
     glfwSetCursorPosCallback(myWindow.getWindow(), mouseCallback);
     glfwSetScrollCallback(myWindow.getWindow(), scrollCallback);
 
-    glfwSetInputMode(myWindow.getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    // glfwSetInputMode(myWindow.getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }
 
 void initOpenGLState()
