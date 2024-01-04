@@ -939,7 +939,7 @@ void drawLightCube2(gps::Shader shader)
 {
     shader.useShaderProgram();
 
-    model *= lightRotation;
+    model = glm::mat4(1.0f);
 
     glUniformMatrix4fv(glGetUniformLocation(shader.shaderProgram, "model"), 1, GL_FALSE, glm::value_ptr(model));
     glUniformMatrix4fv(glGetUniformLocation(shader.shaderProgram, "view"), 1, GL_FALSE, glm::value_ptr(view));
